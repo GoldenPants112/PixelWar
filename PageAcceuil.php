@@ -1,10 +1,11 @@
 <?php
 include("config/config.inc.php");
+
 if (isset($_POST["pseudo"]) ){
     $user_name=QuoteStr($_POST["pseudo"]);
     $user_mail=QuoteStr($_POST["mail"]);
     //penser à le hash en sha256 à l'aide de la foction hash('sha256',chaine)
-    $user_paswrd=QuoteStr(sha1($_POST["mdp"]));
+    $user_paswrd=QuoteStr(hash("sha256",$_POST["mdp"]));
 
     $sql="insert into utilisateur (pseudo,mail,mdp) values($user_name, $user_mail, $user_paswrd)";
     ExecuteSQL($sql);
@@ -36,6 +37,8 @@ if (isset($_POST["pseudo"]) ){
         <input type="password" name="mdp" value="" require>
 
         <input type="submit" value="Valider">
+        <br>
+        <a href="seconnecter.php">Vous avez déjà un compte</a>
 </form>
 </body>
 </html>
