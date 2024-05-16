@@ -22,7 +22,7 @@ if (isset($_POST["pseudo"]) ){
                 $_SESSION['pseudo']=$_POST["pseudo"];
                 // je vais à la page liste.php
                 // header("location: liste.php"); 
-                header("location: index.html");
+                header("location: affichagegrille.php");
             }
         else
             {
