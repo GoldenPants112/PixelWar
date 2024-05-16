@@ -1,11 +1,9 @@
 <?php
-//fichier pour la connection a la base de donnée Mysql
+session_start();
 
 $host='localhost';
-//utilisateur ayant les droits à la connection
 $user = "baba";
 $password = "baba";
-//nom de la base de donnée
 $base = "pixelwar";
 
 $link = connexion_MySQLi_procedural($host, $user,$password,$base);
@@ -30,7 +28,7 @@ function connexion_MySQLi_procedural ($host, $user,$password,$base)
 if (!function_exists("GetSQL")) {
 	function GetSQL($sql, &$tab)
 		{
-			global $link; global $nbEnr;
+			global $link; 
 			$result = mysqli_query($link,$sql) or die($sql.'<br>'.mysqli_error($link)) ; $row = mysqli_fetch_array($result);
 			$nbEnr = mysqli_num_rows($result);
 				$k=0;
@@ -50,8 +48,12 @@ if (!function_exists("GetSQLValue")) {
 	function GetSQLValue($sql)
 		{
 			global $link;
-			$result = mysqli_query($link,$sql) or die($sql.'<br>'.mysqli_error($link)) ; $row = mysqli_fetch_array($result);
-			return $row[0];
+			$result = mysqli_query($link,$sql) or die('<pre>'.$sql.'</pre><hr>'.mysqli_error($link)) ; 
+			$row = mysqli_fetch_array($result);
+			if (isset($row[0]))
+				return $row[0];
+			else
+				return;
         }
 }
 
@@ -66,6 +68,43 @@ if (!function_exists("ExecuteSQL")) {
 }
 
 
+if (!function_exists("QuoteStr")) {
+    function QuoteStr($theValue, $theType="text", $theDefinedValue = "", $theNotDefinedValue = "") 
+    {
+    global $link;
+      $theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($link, $theValue) : mysqli_escape_string($link, $theValue);
+    
+      switch ($theType) {
+        case "text":
+          $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+          break;    
+        case "long":
+        case "int":
+          $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+          break;
+        case "double":
+          $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+          break;
+        case "date":
+          $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+          break;
+        case "defined":
+          $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+          break;
+      }
+      return $theValue;
+    }
+    }
+
+	if (!function_exists("EstConnecte")) {
+		function EstConnecte() 
+		{
+			// si je ne suis pas connecté, je vais à la page index.php, sinon ... rien
+			if (!isset($_SESSION['isConnected']))
+    			header("location: index.php");
+			return;
+		}
+										}
 
 // Ne pas oublier de terminer la page PHP, en fermant la connexion MySQL ( surtout pas ici)
 //  mysqli_close($link)

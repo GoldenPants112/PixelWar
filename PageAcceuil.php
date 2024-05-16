@@ -1,7 +1,17 @@
 <?php
-include("config\config.inc.php");
-?>
+include("config/config.inc.php");
+if (isset($_POST["pseudo"]) ){
+    $user_name=QuoteStr($_POST["pseudo"]);
+    $user_mail=QuoteStr($_POST["mail"]);
+    //penser à le hash en sha256 à l'aide de la foction hash('sha256',chaine)
+    $user_paswrd=QuoteStr(sha1($_POST["mdp"]));
 
+    $sql="insert into utilisateur (pseudo,mail,mdp) values($user_name, $user_mail, $user_paswrd)";
+    ExecuteSQL($sql);
+ 
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,18 +21,21 @@ include("config\config.inc.php");
     <title>Document</title>
 </head>
 <body>
-    <h1> Page D'Acceuil</h1>
+    <h1> Création de compte</h1>
 
-    <h3> Entrer un nom d'utilisateur</h3>
-    <input type="text" name="champ-utilisateur" value="">
 
-    <h3> Entrer un pseudo</h3>
-    <input type="text" name="champ-pseudo" value="">
+    <form method="POST">
 
-    <h3> Entrer un Mpd de passe</h3>
-    <input type="password" name="champ-mdp" value="">
+        <h3> Entrer un nom d'utilisateur</h3>
+        <input type="text" name="pseudo" value="" require>
 
-    <button type="button" value="Valider" >
+        <h3> Entrer votre mail de passe</h3>
+        <input type="text" name="mail" value="" require>
 
+        <h3> Entrer un Mpd de passe</h3>
+        <input type="password" name="mdp" value="" require>
+
+        <input type="submit" value="Valider">
+</form>
 </body>
 </html>
