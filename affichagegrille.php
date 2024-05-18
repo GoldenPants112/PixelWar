@@ -1,3 +1,19 @@
+<?php 
+
+// if($_SESSION['isConnected']== false){
+//     header("Location: seconnecter.php");
+
+// };
+
+$pseudo=$_GET["user"];
+if($_GET['user'] == NULL){
+    header("Location: seconnecter.php");
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +22,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Selection de votre Grille</h1>
+    <?php echo "<h1>Bienvenue a PixelWar ".$pseudo." </h1>";
+    
+    echo "<h2> Selection de Grilles</h2>";    
+    ?>
+
+
+
+
+    <a href="seconnecter.php?isDisconnected=1">Deconnection</a>
 </body>
 </html>
