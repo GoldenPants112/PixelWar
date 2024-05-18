@@ -6,6 +6,8 @@
 // };
 
 $pseudo=$_GET["user"];
+
+//condition pour ne pas permettre l'acces a cette page sans pseudo
 if($_GET['user'] == NULL){
     header("Location: seconnecter.php");
 }
@@ -30,6 +32,6 @@ if($_GET['user'] == NULL){
 
 
 
-    <a href="seconnecter.php?isDisconnected=1">Deconnection</a>
+    <a href="seconnecter.php">Deconnection</a>
 </body>
 </html>

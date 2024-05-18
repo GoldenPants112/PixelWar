@@ -1,10 +1,14 @@
 <?php
 include("config/config.inc.php");
-
+$mauvais_mdp=false;
+$mauvais_compte=false;
 
 if(isset($_GET["isDeconected"])){
     $_SESSION['isConnected']=false;
 }
+
+
+
 
 //condition pour verifier si le pseudo existe dans la bdd
 if (isset($_POST["pseudo"]) ){
@@ -40,16 +44,16 @@ if (isset($_POST["pseudo"]) ){
 
             }
         else{
-                $MauvaisMotDePasse=true;
+                $mauvais_mdp=true;
             }
 
     }
     else{ 
-            $MauvaisMotDePasse=true;
+            $mauvais_compte=true;
         }
      
     //condition qui nous dit si l'utilisateur n'est pas connecter     
-    if ($MauvaisMotDePasse == true){
+    if ($mauvais_mdp == true){
         $_SESSION['isConnected']=false;
     }
 }
@@ -68,6 +72,9 @@ if (isset($_POST["pseudo"]) ){
 <h1> Se connecter </h1>
 
 
+
+
+
 <form method="POST">
 
     <h3> Entrer votre pseudo</h3>
@@ -80,5 +87,17 @@ if (isset($_POST["pseudo"]) ){
     <br>
     <a href="PageAcceuil.php">Cree un compte</a>
 
+<?php if ($mauvais_mdp) { ?>
+            <div>
+                Vous avez saisi un <strong>mauvais</strong> mot de passe. Essayez un nouveau.
+            </div>
+        <?php } ?>
+
+        <?php if ($mauvais_compte) { ?>
+            <div>
+                <strong>Attention!</strong> Le compte que vous avez saisie n'existe pas.
+            </div>
+        <?php } ?>
+        
 </body>
 </html>
