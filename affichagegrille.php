@@ -22,13 +22,19 @@ if($_GET['user'] == NULL){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <?php echo "<h1>Bienvenue a PixelWar ".$pseudo." </h1>";
     
     echo "<h2> Selection de Grilles</h2>";    
     ?>
+    <form method="post">
 
+    <input type="submit" value="+ Creation de nouvelle grille ">
+
+    </form>
 
 
 

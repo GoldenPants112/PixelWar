@@ -67,6 +67,8 @@ if (isset($_POST["pseudo"]) ){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 <h1> Se connecter </h1>
@@ -85,7 +87,7 @@ if (isset($_POST["pseudo"]) ){
 
     <input type="submit" value="Valider">
     <br>
-    <a href="PageAcceuil.php">Cree un compte</a>
+    <a href="PageAcceuil.php">Créer un compte</a>
 
 <?php if ($mauvais_mdp) { ?>
             <div>
