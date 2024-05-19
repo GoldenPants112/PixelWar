@@ -1,8 +1,11 @@
 <?php
 include("config/config.inc.php");
-
+$pseudo_pris=false;
+$requis=false;
+$compte_creer=false;
 if (isset($_POST["pseudo"]) ){
 
+    
 
     //nom/mail/mdp avec des quotes pour les requettes sql
     $user_name=QuoteStr($_POST["pseudo"]);
@@ -18,9 +21,14 @@ if (isset($_POST["pseudo"]) ){
         $pseudo_pris=true;
     }
     else{
-        $sql="insert into utilisateur (pseudo,mail,mdp) values($user_name, $user_mail, $user_paswrd)";
-        ExecuteSQL($sql);
-        $pseudo_pris=false;
+        if (empty($_POST["pseudo"]) || empty($_POST["mdp"]) ) {
+            $requis=true;
+        }
+        else{
+            $sql="insert into utilisateur (pseudo,mail,mdp) values($user_name, $user_mail, $user_paswrd)";
+            ExecuteSQL($sql);
+            $compte_creer=true;
+        }
     }
 
     
@@ -42,30 +50,36 @@ if (isset($_POST["pseudo"]) ){
 
 
     <form method="POST">
+        <p class="infomsg">Les * designent les champs obligatoires</p>
+        <h3> *Entrer un nom d'utilisateur</h3>
+        <input type="text" name="pseudo" value="" >
 
-        <h3> Entrer un nom d'utilisateur</h3>
-        <input type="text" name="pseudo" value="" require>
+        <h3> Entrer votre adresse mail</h3>
+        <input type="text" name="mail" value="" >
 
-        <h3> Entrer votre mail de passe</h3>
-        <input type="text" name="mail" value="" require>
-
-        <h3> Entrer un Mpd de passe</h3>
-        <input type="password" name="mdp" value="" require>
+        <h3> *Entrer un Mpd de passe</h3>
+        <input type="password" name="mdp" value="" >
 
         <input type="submit" value="Valider">
         <br>
 
         <?php 
-        if(isset ($pseudo_pris)){
-            if($pseudo_pris){
-                echo"<div>Ce pseudo est déjà pris, veuillez prendre un autre.</div>";
+        if($pseudo_pris){
+            echo"<div>Ce pseudo est déjà pris, veuillez prendre un autre.</div>";
 
-            }
-            else{
-                echo "<div>Le compte a été crée avec succes.</div>";
-                
-            }
         }
+        else if($requis){
+            echo '<div class="warning">Les champs (*) sont obligatoires !</div>';
+        }
+        else if ($compte_creer){
+            echo "<div>Le compte a été crée avec succes.</div>";
+                
+        }
+        else{
+
+        }
+            
+        
 
         ?>
         <br>
