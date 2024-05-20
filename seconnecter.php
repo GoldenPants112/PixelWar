@@ -79,7 +79,7 @@ if (isset($_POST["pseudo"]) ){
 
 <form method="POST">
 
-    <h3> Entrer votre pseudo</h3>
+    <h3> Entrer votre nom d'utilisateur</h3>
     <input type="text" name="pseudo" value="" require>
 
     <h3> Entrer votre Mot de passe</h3>

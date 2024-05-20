@@ -1,7 +1,7 @@
 <?php
 include("config/config.inc.php");
 $pseudo_pris=false;
-$requis=false;
+$champs_requis=false;
 $compte_creer=false;
 if (isset($_POST["pseudo"]) ){
 
@@ -22,7 +22,7 @@ if (isset($_POST["pseudo"]) ){
     }
     else{
         if (empty($_POST["pseudo"]) || empty($_POST["mdp"]) ) {
-            $requis=true;
+            $champs_requis=true;
         }
         else{
             $sql="insert into utilisateur (pseudo,mail,mdp) values($user_name, $user_mail, $user_paswrd)";
@@ -68,7 +68,7 @@ if (isset($_POST["pseudo"]) ){
             echo"<div>Ce pseudo est déjà pris, veuillez prendre un autre.</div>";
 
         }
-        else if($requis){
+        else if($champs_requis){
             echo '<div class="warning">Les champs (*) sont obligatoires !</div>';
         }
         else if ($compte_creer){
