@@ -3,6 +3,7 @@ include("config/config.inc.php");
 
 //nom de l'utilisateur sans quotes 
 $pseudo=$_GET["user"];
+
 //recuperer le nom de la grille renter par l'utilisateur
 $nom_grille=$_POST["nom"];
 
@@ -33,7 +34,7 @@ $id_quote=QuoteStr($id);
 
 //selectionne toutes les grilles 
 $sql_grille="select * from `grille`";
-$nbr_grille= GetSQL($sql_grille,$grille);
+$nbr_grille= GetSQL($sql_grille,$grilles);
 
 echo "GetSQL:".$nbr_grille;
 echo "<br>";
@@ -43,6 +44,8 @@ echo "Il ya ".$nbr_grille." grilles au totale";
 // }
 // echo "<br>";
 
+
+//condition pour un creation de grille
 if (isset($_POST["ajout_grille"]) ){
     if (empty($nom_grille)){
         $nom_requis=true;
@@ -83,11 +86,23 @@ if (isset($_POST["ajout_grille"]) ){
     
     echo "<h2> Sélection de Grilles</h2>";
      
+ 
+        for ($i=0;$i<$nbr_grille;$i++)
+            {
+                $nom_grille_affiche=$grilles[$i][1];
+
+                echo '<TR>';
+                //affiche la liste des grilles.
+                    echo '<td><a href="grille.php?nom='.$nom_grille_affiche.'&pseudo='.$pseudo.'">'.$nom_grille_affiche.'</a></td>';
+                    echo"<br>";
+                echo '</TR>';
+            }
+
+
+
 
 
     ?>
-
-
     <form method="post">
     <p>Nom de votre nouvelle grille</p>
     <input type="text" name="nom" value="">
@@ -96,7 +111,7 @@ if (isset($_POST["ajout_grille"]) ){
     </form>
     <?php
     if($ajout_grille){
-        echo "<div>Vous avez ajouter une grille!</div>";
+        echo "<div>Vous avez ajouter une grille! Actualiser la page pour la visualiser dans la liste.</div>";
     }
     else if ($nom_requis){
         echo "<div class='warning'>Un nom de grille est requis pour la création</div>";
@@ -106,6 +121,9 @@ if (isset($_POST["ajout_grille"]) ){
     }
     echo "<br>";   
     ?>
+
+    
+
     <a href="seconnecter.php">Deconnection</a>
 </body>
 </html>
