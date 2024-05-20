@@ -11,30 +11,30 @@ if(isset($_GET["isDeconected"])){
 
 
 //condition pour verifier si le pseudo existe dans la bdd
-if (isset($_POST["pseudo"]) ){
+if (isset($_POST["mail"]) ){
     
-    //nom de l'utilisateur sans quotes 
-    $user_name=$_POST["pseudo"];
+    //mail de l'utilisateur sans quotes 
+    $user_mail=$_POST["mail"];
 
-    //nom de l'utilisateur avec des quotes pour les requettes sql
-    $user_name_quote=QuoteStr($user_name);
+    //mail de l'utilisateur avec des quotes pour les requettes sql
+    $user_mail_quote=QuoteStr($user_mail);
 
-    //penser à le hash en sha256 à l'aide de la foction hash('sha256',chaine)
-    $sql="select mdp from `utilisateur` where pseudo = ".QuoteStr($_POST["pseudo"]);
+    $sql="select mdp from `utilisateur` where mail = ".$user_mail_quote;
     $pass_bdd=GetSQLValue($sql);
 
+    $sql="select pseudo from `utilisateur` where mail = ".$user_mail_quote;
+    $user_name=GetSQLValue($sql);
             
     // la variable $hash correspond au sha256 du password
 
     if (isset($pass_bdd)){
 
         $hash_poste=hash('sha256', $_POST["mdp"]);
-        //$hash_poste= $_POST["mdp"];
         // si le hash que je poste est égale à celui qui est dans la bdd, c'est que le couple Login/password est correct
         
         if($pass_bdd==$hash_poste){
                 $_SESSION['isConnected']=true;
-                $_SESSION['pseudo']=$_POST["pseudo"];
+                $_SESSION['mail']=$user_mail;
                 
 
                 header("Location: selection_grille.php?user=".$user_name);
@@ -77,8 +77,8 @@ if (isset($_POST["pseudo"]) ){
 
 <form method="POST">
 
-    <h3> Entrer votre nom d'utilisateur</h3>
-    <input type="text" name="pseudo" value="" require>
+    <h3> Entrer votre mail</h3>
+    <input type="text" name="mail" value="" require>
 
     <h3> Entrer votre Mot de passe</h3>
     <input type="password" name="mdp" value="" require>

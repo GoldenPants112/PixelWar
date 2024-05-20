@@ -21,7 +21,7 @@ if (isset($_POST["pseudo"]) ){
         $pseudo_pris=true;
     }
     else{
-        if (empty($_POST["pseudo"]) || empty($_POST["mdp"]) ) {
+        if (empty($_POST["pseudo"]) || empty($_POST["mdp"]) || empty($_POST["mail"]) )  {
             $champs_requis=true;
         }
         else{
@@ -51,13 +51,13 @@ if (isset($_POST["pseudo"]) ){
 
     <form method="POST">
         <p class="infomsg">Les * designent les champs obligatoires</p>
-        <h3> *Entrer un nom d'utilisateur</h3>
+        <h3>*Entrer un nom d'utilisateur</h3>
         <input type="text" name="pseudo" value="" >
 
-        <h3> Entrer votre adresse mail</h3>
+        <h3>*Entrer votre adresse mail</h3>
         <input type="text" name="mail" value="" >
 
-        <h3> *Entrer un Mpd de passe</h3>
+        <h3>*Entrer un Mpd de passe</h3>
         <input type="password" name="mdp" value="" >
         <br>
         <br>
