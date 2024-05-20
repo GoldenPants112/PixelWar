@@ -78,7 +78,7 @@ if (isset($_POST["mail"]) ){
 <form method="POST">
 
     <h3> Entrer votre mail</h3>
-    <input type="text" name="mail" value="" placeholder="example@example.com" required>
+    <input type="email" name="mail" value="" placeholder="example@example.com" required>
 
     <h3> Entrer votre Mot de passe</h3>
     <input type="password" name="mdp" value="" placeholder="example12345" required>
