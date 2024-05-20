@@ -13,11 +13,11 @@ if(isset($_GET["isDeconected"])){
 //condition pour verifier si le pseudo existe dans la bdd
 if (isset($_POST["pseudo"]) ){
     
-    //nom de l'utilisateur avec des quotes pour les requettes sql
-    $user_name=QuoteStr($_POST["pseudo"]);
-
     //nom de l'utilisateur sans quotes 
-    $user_name_nonquote=$_POST["pseudo"];
+    $user_name=$_POST["pseudo"];
+
+    //nom de l'utilisateur avec des quotes pour les requettes sql
+    $user_name_quote=QuoteStr($user_name);
 
     //penser à le hash en sha256 à l'aide de la foction hash('sha256',chaine)
     $sql="select mdp from `utilisateur` where pseudo = ".QuoteStr($_POST["pseudo"]);
@@ -35,12 +35,10 @@ if (isset($_POST["pseudo"]) ){
         if($pass_bdd==$hash_poste){
                 $_SESSION['isConnected']=true;
                 $_SESSION['pseudo']=$_POST["pseudo"];
-                // je vais à la page liste.php
-                // header("location: liste.php");
+                
 
-                header("Location: affichagegrille.php?user=".$user_name_nonquote);
+                header("Location: selection_grille.php?user=".$user_name);
 
-                //header("Location: detail.php?param=".$last_id);
 
             }
         else{
@@ -87,7 +85,7 @@ if (isset($_POST["pseudo"]) ){
 
     <input type="submit" value="Valider">
     <br>
-    <a href="PageAcceuil.php">Créer un compte</a>
+    <a href="creation_compte.php">Créer un compte</a>
 
 <?php if ($mauvais_mdp) { ?>
             <div>

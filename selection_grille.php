@@ -5,7 +5,11 @@ include("config/config.inc.php");
 $pseudo=$_GET["user"];
 
 //recuperer le nom de la grille renter par l'utilisateur
-$nom_grille=$_POST["nom"];
+if (isset($_POST["nom"])){      //condition pour eviter un warning au lancement de la page
+    $nom_grille=$_POST["nom"];
+    $nom_grille_quote=QuoteStr($nom_grille);  //pour les rqeutte sql
+}
+
 
 //initialisation des variables   
 $nom_requis=false;
@@ -14,7 +18,7 @@ $nom_grille_pris=false;
 
 //nom de l'utilisateur avec des quotes pour les requettes sql
 $pseudo_quote=QuoteStr($pseudo);
-$nom_grille_quote=QuoteStr($nom_grille);
+
 
 
 //condition pour ne pas permettre l'acces a cette page sans pseudo
@@ -36,13 +40,6 @@ $id_quote=QuoteStr($id);
 $sql_grille="select * from `grille`";
 $nbr_grille= GetSQL($sql_grille,$grilles);
 
-echo "GetSQL:".$nbr_grille;
-echo "<br>";
-echo "Il ya ".$nbr_grille." grilles au totale";
-// for($i=0;$i<$sql_grille;$i++){
-//     //echo $grille[$i];
-// }
-// echo "<br>";
 
 
 //condition pour un creation de grille
