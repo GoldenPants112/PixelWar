@@ -82,15 +82,18 @@ if (isset($_POST["pseudo"]) ){
 
     <h3> Entrer votre Mot de passe</h3>
     <input type="password" name="mdp" value="" require>
-
+    <br>
+    <br>
     <input type="submit" value="Valider">
     <br>
-    <a href="creation_compte.php">Créer un compte</a>
+    <br>
+    
 
-<?php if ($mauvais_mdp) { ?>
-            <div>
-                Vous avez saisi un <strong>mauvais</strong> mot de passe. Essayez un nouveau.
+    <?php if ($mauvais_mdp) { ?>
+            <div class="warning">
+                Le mot de passe que vous avez saisie n'est pas correcte.
             </div>
+            
         <?php } ?>
 
         <?php if ($mauvais_compte) { ?>
@@ -98,6 +101,7 @@ if (isset($_POST["pseudo"]) ){
                 <strong>Attention!</strong> Le compte que vous avez saisie n'existe pas.
             </div>
         <?php } ?>
-        
+    <br>    
+    <a href="creation_compte.php">Créer un compte</a>
 </body>
 </html>

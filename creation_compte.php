@@ -59,20 +59,21 @@ if (isset($_POST["pseudo"]) ){
 
         <h3> *Entrer un Mpd de passe</h3>
         <input type="password" name="mdp" value="" >
-
+        <br>
+        <br>
         <input type="submit" value="Valider">
         <br>
-
+        <br>
         <?php 
         if($pseudo_pris){
-            echo"<div>Ce pseudo est déjà pris, veuillez prendre un autre.</div>";
+            echo"<div><strong>Ce pseudo est déjà pris</strong> !</div>";
 
         }
         else if($champs_requis){
-            echo '<div class="warning">Les champs (*) sont obligatoires !</div>';
+            echo '<div class="warning">Les champs (*) sont <strong>obligatoires</strong> !</div>';
         }
         else if ($compte_creer){
-            echo "<div>Le compte a été crée avec succes.</div>";
+            echo "<div>Le compte a été crée avec succès.</div>";
                 
         }
         else{

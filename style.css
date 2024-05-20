@@ -1,10 +1,21 @@
 body{
+    background-color: #f5f5f5; /* Couleur de fond douce */
+    color: #333; /* Couleur du texte */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
+    text-align: center;
 }
 .infomsg{
     font-size: small;
 }
 .warning{
     color: crimson;
+}
+
+a {
+    color: #1e90ff; /* Couleur d'accent pour les liens */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }

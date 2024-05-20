@@ -101,8 +101,9 @@ if (isset($_POST["ajout_grille"]) ){
 
     ?>
     <form method="post">
-    <p>Nom de votre nouvelle grille</p>
+    <p>Nom de votre nouvelle grille:</p>
     <input type="text" name="nom" value="">
+    <br>
     <input type="submit" value="+ Creation de nouvelles grilles" name="ajout_grille">
 
     </form>
@@ -121,6 +122,6 @@ if (isset($_POST["ajout_grille"]) ){
 
     
 
-    <a href="seconnecter.php">Deconnection</a>
+    <a href="seconnecter.php">Déconnection</a>
 </body>
 </html>
