@@ -52,13 +52,13 @@ if (isset($_POST["pseudo"]) ){
     <form method="POST">
         <p class="infomsg">Les * designent les champs obligatoires</p>
         <h3>*Entrer un nom d'utilisateur</h3>
-        <input type="text" name="pseudo" value="" >
+        <input type="text" name="pseudo" value="" placeholder="example30" required>
 
         <h3>*Entrer votre adresse mail</h3>
-        <input type="text" name="mail" value="" >
+        <input type="text" name="mail" value="" placeholder="example@example.com" required>
 
         <h3>*Entrer un Mpd de passe</h3>
-        <input type="password" name="mdp" value="" >
+        <input type="password" name="mdp" value="" placeholder="example12345" required>
         <br>
         <br>
         <input type="submit" value="Valider">

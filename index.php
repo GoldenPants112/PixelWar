@@ -1,5 +1,9 @@
 
+<?php
+    header("Location: creation_compte.php");
+    
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +12,6 @@
     <title>Document</title>
 </head>
 <body>
-    Pour commencer, rendez-vous sur PixelWar/creation_compte.php 
-    
     
 </body>
 </html>

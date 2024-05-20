@@ -78,10 +78,10 @@ if (isset($_POST["mail"]) ){
 <form method="POST">
 
     <h3> Entrer votre mail</h3>
-    <input type="text" name="mail" value="" require>
+    <input type="text" name="mail" value="" placeholder="example@example.com" require>
 
     <h3> Entrer votre Mot de passe</h3>
-    <input type="password" name="mdp" value="" require>
+    <input type="password" name="mdp" value="" placeholder="example12345" require>
     <br>
     <br>
     <input type="submit" value="Valider">
