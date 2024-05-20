@@ -1,7 +1,6 @@
 <?php
 include("config/config.inc.php");
 $pseudo_pris=false;
-$champs_requis=false;
 $compte_creer=false;
 if (isset($_POST["pseudo"]) ){
 
@@ -21,14 +20,12 @@ if (isset($_POST["pseudo"]) ){
         $pseudo_pris=true;
     }
     else{
-        if (empty($_POST["pseudo"]) || empty($_POST["mdp"]) || empty($_POST["mail"]) )  {
-            $champs_requis=true;
-        }
-        else{
-            $sql="insert into utilisateur (pseudo,mail,mdp) values($user_name, $user_mail, $user_paswrd)";
-            ExecuteSQL($sql);
-            $compte_creer=true;
-        }
+        
+        
+        $sql="insert into utilisateur (pseudo,mail,mdp) values($user_name, $user_mail, $user_paswrd)";
+        ExecuteSQL($sql);
+        $compte_creer=true;
+        
     }
 
     
@@ -68,9 +65,6 @@ if (isset($_POST["pseudo"]) ){
         if($pseudo_pris){
             echo"<div><strong>Ce pseudo est déjà pris</strong> !</div>";
 
-        }
-        else if($champs_requis){
-            echo '<div class="warning">Les champs (*) sont <strong>obligatoires</strong> !</div>';
         }
         else if ($compte_creer){
             echo "<div>Le compte a été crée avec succès.</div>";
