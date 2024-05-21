@@ -12,7 +12,7 @@ function generateGrilles (){
 window.addEventListener("load",generateGrilles());
 
 
-function attachToolsEvent(){
+function colorPixel(){
     const pixels = Array.from(document.querySelectorAll('pixel'));
     pixels.forEach(pixel => {
         pixel.addEventListener('click',() =>{
@@ -22,4 +22,9 @@ function attachToolsEvent(){
 
     
 }
-window.addEventListener("load",attachToolsEvent());
+window.addEventListener("load",colorPixel());
+
+
+function colorSelector() {
+    
+}
