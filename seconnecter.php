@@ -24,7 +24,8 @@ if (isset($_POST["mail"]) ){
 
     $sql="select pseudo from `utilisateur` where mail = ".$user_mail_quote;
     $user_name=GetSQLValue($sql);
-            
+      
+
     // la variable $hash correspond au sha256 du password
 
     if (isset($pass_bdd)){
@@ -78,7 +79,7 @@ if (isset($_POST["mail"]) ){
 <form method="POST">
 
     <h3> Entrer votre mail</h3>
-    <input type="email" name="mail" value="" placeholder="example@example.com" required>
+    <input type="text" name="mail" value="" placeholder="example@example.com" required>
 
     <h3> Entrer votre Mot de passe</h3>
     <input type="password" name="mdp" value="" placeholder="example12345" required>

@@ -19,3 +19,30 @@ a {
 a:hover {
     text-decoration: underline;
 }
+grille {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+pixels{
+    zoom: 300%;
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    row-gap: 0px;
+    column-gap: 0px;
+}
+
+pixel{
+    display: flex;
+    width: 5px;
+    height: 5px;
+
+    border: 0.1px solid #444;
+
+    background: center no-repeat;
+    background-size: contain;
+
+    cursor: pointer;
+}
