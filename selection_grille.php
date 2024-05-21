@@ -92,7 +92,6 @@ if (isset($_POST["ajout_grille"]) ){
                 //affiche la liste des grilles.
                     echo '<td><a href="grille.php?nom='.$nom_grille_affiche.'&pseudo='.$pseudo.'">'.$nom_grille_affiche.'</a></td>';
                     $sql="select pseudo from utilisateur where ";
-                    echo"    Cree par ";
                     echo"<br>";
                 echo '</TR>';
             }

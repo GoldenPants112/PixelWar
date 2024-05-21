@@ -27,7 +27,7 @@ grille {
 }
 
 pixels{
-    zoom: 300%;
+    zoom: 350%;
     display: grid;
     grid-template-columns: repeat(30, 1fr);
     row-gap: 0px;
@@ -46,6 +46,38 @@ pixel{
     cursor: pointer;
 }
 
+
+
+colors {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+  
+  }
+  
+  color {
+    width: 30px;
+    height: 30px;
+  
+    border: 1px solid #000000;
+    border-radius: 5px;
+  
+    margin-bottom: 10px;
+  
+    background: center no-repeat;
+    background-size: 40px;
+  
+    cursor: pointer;
+  }
+
+  
+color.active {
+    border: 1px solid green;
+    box-shadow: 0 0 4px green;
+  }
+
 .red{
     background-color: red;
 }
@@ -57,4 +89,10 @@ pixel{
 }
 .yellow{
     background-color: yellow;
+}
+.purpule{
+    background-color: orange;
+}
+.pink{
+    background-color: pink;
 }

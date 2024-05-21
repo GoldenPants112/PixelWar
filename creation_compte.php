@@ -61,18 +61,16 @@ if (isset($_POST["pseudo"]) ){
         <input type="submit" value="Valider">
         <br>
         <br>
-        <?php 
+        <?php
+         
         if($pseudo_pris){
             echo"<div><strong>Ce pseudo est déjà pris</strong> !</div>";
 
         }
         else if ($compte_creer){
             echo "<div>Le compte a été crée avec succès.</div>";
-                
         }
-        else{
-
-        }
+        
             
         
 
