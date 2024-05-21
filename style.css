@@ -46,3 +46,7 @@ pixel{
 
     cursor: pointer;
 }
+
+.red{
+    background-color: red;
+}

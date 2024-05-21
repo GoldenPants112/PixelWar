@@ -11,3 +11,15 @@ function generateGrilles (){
 
 window.addEventListener("load",generateGrilles());
 
+
+function attachToolsEvent(){
+    const pixels = Array.from(document.querySelectorAll('pixel'));
+    pixels.forEach(pixel => {
+        pixel.addEventListener('click',() =>{
+        pixel.classList.add("red");
+        });
+    });
+
+    
+}
+window.addEventListener("load",attachToolsEvent());
