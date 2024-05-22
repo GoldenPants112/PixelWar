@@ -11,24 +11,23 @@ function generateGrilles (){
 
 window.addEventListener("load",generateGrilles());
 
-
+//fonction qui colorie le pixel selon la couleur choisie
 function colorPixel(){
     const pixels = Array.from(document.querySelectorAll('pixel'));
     pixels.forEach(pixel => {
         pixel.addEventListener('click',() =>{
+        if(color.classList.contains("red") )
         pixel.classList.add("red");
         });
     });
 
     
 }
-//window.addEventListener("load",colorPixel());
 
 
 //fonction qui surligne la couleur selectionne
 function colorSelector(){
     const colors= Array.from(document.querySelectorAll("color"));
-    console.log(colors);
     colors.forEach(color=>{
         color.addEventListener("click",()=>{
 
@@ -47,23 +46,45 @@ function colorSelector(){
 window.addEventListener("load",colorSelector());
 
 
+//fonction qui a pour but de supprimer la couleur d'un pixel 
+function supprColor(pixel){
+    pixel.classList="";
+}
 
-/*
 function pixelColor() {
     const pixels =Array.from(document.querySelectorAll("pixel"));
     const affiche_color= Array.from(document.querySelectorAll("color"));
     pixels.forEach(pixel => {
         affiche_color.forEach(color =>{
-            addEventListener("click",()=>{
-                if(color.classList.contains("red")){
-
+            pixel.addEventListener("click",()=>{
+                if(color.classList.contains("red") && color.classList.contains("active")){             
+                    supprColor(pixel);
+                    pixel.classList.add("red");
                 }
-
-
-
+                else if(color.classList.contains("green") && color.classList.contains("active")){             
+                    supprColor(pixel);
+                    pixel.classList.add("green");
+                }
+                else if(color.classList.contains("blue") && color.classList.contains("active")){             
+                    supprColor(pixel);
+                    pixel.classList.add("blue");
+                }
+                else if(color.classList.contains("yellow") && color.classList.contains("active")){             
+                    supprColor(pixel);
+                    pixel.classList.add("yellow");
+                }
+                else if(color.classList.contains("orange") && color.classList.contains("active")){             
+                    supprColor(pixel);
+                    pixel.classList.add("orange");
+                }
+                else if(color.classList.contains("pink") && color.classList.contains("active")){             
+                    supprColor(pixel);
+                    pixel.classList.add("pink");
+                }
 
             });
             
         });
     });
-}*/
+}
+window.addEventListener("load",pixelColor());

@@ -30,13 +30,12 @@
         <h1>PixelWar</h1>
         <?php echo"<h2>Grille crée par ".$createur."</h2>";
     ?>
-    <br>
         <colors>
             <color class="red" title="red"></color>
             <color class="green" title="green"></color>
             <color class="blue" title="blue"></color>
             <color class="yellow" title="yellow"></color>
-            <color class="purpule" title="purpule"></color>
+            <color class="orange" title="orange"></color>
             <color class="pink" title="pink"></color>
         </colors>
         <grille>
