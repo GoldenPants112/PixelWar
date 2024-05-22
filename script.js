@@ -1,10 +1,11 @@
 function generateGrilles (){
     
     let pixels = document.querySelector("pixels");
-    for (i=0;i<900;i++){
+    for (i=1;i<901;i++){
    
-    const pixel = document.createElement("pixel");
-    pixels.appendChild(pixel);
+        const pixel = document.createElement("pixel");
+        pixel.id=i;
+        pixels.appendChild(pixel);
     }
 
 }
@@ -88,3 +89,34 @@ function pixelColor() {
     });
 }
 window.addEventListener("load",pixelColor());
+
+
+
+
+
+//fonction qui cherche a envoyer des donee au fichier php afin de recuperere la couleur et la position des pixels
+async function getGrille(){
+    const pixels = Array.from(document.querySelectorAll("pixel"));
+    const formData= new formData;
+
+    pixels.forEach(pixel=>{
+        let id=pixel.id;
+        let color = pixel.classList;
+        
+        formData.append("color[]",color);
+        formData.append("position[]",id);
+    });
+        
+
+        
+    try{const reponse = await fetch ("grille.php",{
+            method:"post",
+            body:formData
+        });
+    const message= await reponse.text();
+    console.log(message);}
+    catch(error){
+        console.error("Sending errors",error);
+    }
+}
+//window.addEventListener("load",getGrille());

@@ -1,6 +1,10 @@
 body{
-    background-color: #f5f5f5; /* Couleur de fond douce */
+    /*background-color: #f5f5f5;
+    Couleur de fond douce */
+    background-color: #000000;
     color: #333; /* Couleur du texte */
+    color: #f5f5f5; /* Couleur du texte */
+
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     
@@ -69,7 +73,7 @@ colors {
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    
+
     background: center no-repeat;
     background-size: 40px;
   
@@ -78,8 +82,8 @@ colors {
 
   
 color.active {
-    border: 2px solid rgb(0, 0, 0);
-    box-shadow: 0 0 6px rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: 0 0 6px rgb(255, 255, 255);
   }
 
 .red{
