@@ -22,9 +22,48 @@ function colorPixel(){
 
     
 }
-window.addEventListener("load",colorPixel());
+//window.addEventListener("load",colorPixel());
 
 
-function colorSelector() {
-    
+//fonction qui surligne la couleur selectionne
+function colorSelector(){
+    const colors= Array.from(document.querySelectorAll("color"));
+    console.log(colors);
+    colors.forEach(color=>{
+        color.addEventListener("click",()=>{
+
+            if (!color.classList.contains("active")){
+                try{
+                    document.querySelector("color.active").classList.remove("active");
+                    
+                }
+                finally{
+                    color.classList.add("active");
+                }
+            }
+        })
+    })
 }
+window.addEventListener("load",colorSelector());
+
+
+
+/*
+function pixelColor() {
+    const pixels =Array.from(document.querySelectorAll("pixel"));
+    const affiche_color= Array.from(document.querySelectorAll("color"));
+    pixels.forEach(pixel => {
+        affiche_color.forEach(color =>{
+            addEventListener("click",()=>{
+                if(color.classList.contains("red")){
+
+                }
+
+
+
+
+            });
+            
+        });
+    });
+}*/
