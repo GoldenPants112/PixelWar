@@ -79,8 +79,9 @@ if (isset($_POST["ajout_grille"]) ){
 
 </head>
 <body>
-    <?php echo "<h1>Bienvenue à PixelWar ".$pseudo." </h1>";
     
+
+    <?php echo "<h1>Bienvenue à PixelWar ".$pseudo." </h1>";
     echo "<h2> Sélection de Grilles</h2>";
      
  
@@ -105,7 +106,7 @@ if (isset($_POST["ajout_grille"]) ){
     <p>Nom de votre nouvelle grille:</p>
     <input type="text" name="nom" value="">
     <br>
-    <input type="submit" value="+ Creation de nouvelles grilles" name="ajout_grille">
+    <input class="button" type="submit" value="+ Crée une grille" name="ajout_grille">
 
     </form>
     <?php

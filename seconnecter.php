@@ -85,7 +85,7 @@ if (isset($_POST["mail"]) ){
     <input type="password" name="mdp" value="" placeholder="example12345" required>
     <br>
     <br>
-    <input type="submit" value="Valider">
+    <input class="button" type="submit" value="Valider">
     <br>
     <br>
     
@@ -104,5 +104,8 @@ if (isset($_POST["mail"]) ){
         <?php } ?>
     <br>    
     <a href="creation_compte.php">Créer un compte</a>
+    <br>
+    <a href="index.php">Page d'Acceuil</a>
+
 </body>
 </html>

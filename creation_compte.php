@@ -42,7 +42,8 @@ if (isset($_POST["pseudo"]) ){
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
+<body>  
+    
     <h1> Création de compte</h1>
 
 
@@ -58,7 +59,7 @@ if (isset($_POST["pseudo"]) ){
         <input type="password" name="mdp" value="" placeholder="example12345" required>
         <br>
         <br>
-        <input type="submit" value="Valider">
+        <input class="button" type="submit" value="Valider">
         <br>
         <br>
         <?php
@@ -75,8 +76,11 @@ if (isset($_POST["pseudo"]) ){
         
 
         ?>
-        <br>
+
         <a href="seconnecter.php">Vous avez déjà un compte</a>
+        <br>
+        <a href="index.php">Page d'Acceuil</a>
+
 </form>
 </body>
 </html>
