@@ -20,7 +20,7 @@
     </div>
     <a href="creation_compte.php" class="button">Créer un compte</a>
     <br>
-    <a href="seconnecter.php" class="button">Vous avez déjà un compte</a>
+    <a href="seconnecter.php" class="button">Se connecter</a>
     <br>
     <img src="img\pixel-war.png" >
     
