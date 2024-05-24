@@ -6,5 +6,7 @@ Ce projet est une version de PixelWar realisé à l'aide des languages PHP, Java
 
 ![seconnecter](https://github.com/GoldenPants112/PixelWar/assets/104978047/9f29d683-da7f-475b-98e6-beae2da78ea4)
 
-![pixel-war](https://github.com/GoldenPants112/PixelWar/assets/104978047/b685cbee-00b0-491f-af37-a7a8a95fb006)
+
+
+![grille](https://github.com/GoldenPants112/PixelWar/assets/104978047/8b75f6b5-e74b-4fd9-b093-c0880a6ea55f)
 
