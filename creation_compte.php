@@ -31,7 +31,8 @@ if (isset($_POST["pseudo"]) ){
         $compte_creer=true;
         
     }
-
+    $pseudo_pris_sql->close();
+    $insert_sql->close();
     
 }
 

@@ -1,9 +1,3 @@
-
-<?php
-    //header("Location: creation_compte.php");
-    
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

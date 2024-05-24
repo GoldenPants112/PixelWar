@@ -15,28 +15,41 @@ if (isset($_POST["mail"]) ){
     
     //mail de l'utilisateur sans quotes 
     $user_mail=$_POST["mail"];
+ 
+    //utilisation des prepared statments pour avoir le mail et le mdp chiffre
+    $select_mdp_sql=$link->prepare("select mdp from `utilisateur` where mail=?");
+    $select_mdp_sql->bind_param("s", $user_mail);
+    $select_mdp_sql->execute();
+    $mdp_result=$select_mdp_sql->get_result();
 
-    //mail de l'utilisateur avec des quotes pour les requettes sql
-    $user_mail_quote=QuoteStr($user_mail);
+    if ($mdp_row = $mdp_result->fetch_assoc()) {
+        $pass_bdd = $mdp_row["mdp"];
+    } else {
+        $pass_bdd = null; 
+    }
+    
+    $select_mdp_sql->close();
+    
 
-    $sql="select mdp from `utilisateur` where mail = ".$user_mail_quote;
-    $pass_bdd=GetSQLValue($sql);
+    $select_user_sql=$link->prepare("select pseudo from `utilisateur` where mail=?");
+    $select_user_sql->bind_param("s", $user_mail);
+    $select_user_sql->execute();
+    $user_result=$select_user_sql->get_result();
 
-    $sql="select pseudo from `utilisateur` where mail = ".$user_mail_quote;
-    $user_name=GetSQLValue($sql);
-      
+    if ($user_row = $user_result->fetch_assoc()) {
+        $user_name = $user_row["pseudo"];
+    } else {
+        $user_name = null; 
+    }
+    $select_user_sql->close();
 
-    // la variable $hash correspond au sha256 du password
-
-    if (isset($pass_bdd)){
-
+    if ($pass_bdd !== null){
+        
         $hash_poste=hash('sha256', $_POST["mdp"]);
         // si le hash que je poste est égale à celui qui est dans la bdd, c'est que le couple Login/password est correct
-        
         if($pass_bdd==$hash_poste){
                 $_SESSION['isConnected']=true;
                 $_SESSION['mail']=$user_mail;
-                
 
                 header("Location: selection_grille.php?user=".$user_name);
 
@@ -104,6 +117,7 @@ if (isset($_POST["mail"]) ){
         <?php } ?>
     <br>    
     <a href="creation_compte.php">Créer un compte</a>
+    <br>
     <br>
     <a href="index.php">Page d'Acceuil</a>
 
