@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-05-20T14:53:43.024Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="v--Vbs_8kxIaXCqKIxjt" version="24.4.4" type="device">
+<mxfile host="app.diagrams.net" modified="2024-05-24T17:08:51.929Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="1ujYQ9CWyhf4L0u0unCK" version="24.4.6" type="device">
   <diagram name="Page-1" id="_MDC-iJTTF_jpSJEV-Ld">
     <mxGraphModel dx="1393" dy="818" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -20,19 +20,16 @@
           <mxGeometry y="120" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="DlC24ixFXXdRtT2Mmo7n-11" value="Pxel" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="653" y="250" width="140" height="150" as="geometry" />
+          <mxGeometry x="653" y="250" width="140" height="120" as="geometry" />
         </mxCell>
         <mxCell id="DlC24ixFXXdRtT2Mmo7n-12" value="&lt;u&gt;ID&lt;/u&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="DlC24ixFXXdRtT2Mmo7n-11" vertex="1">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="DlC24ixFXXdRtT2Mmo7n-47" value="Position x" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=none;gradientColor=none;strokeColor=none;" parent="DlC24ixFXXdRtT2Mmo7n-11" vertex="1">
+        <mxCell id="DlC24ixFXXdRtT2Mmo7n-47" value="Position" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;fontFamily=Helvetica;fontSize=12;fontColor=default;fillColor=none;gradientColor=none;strokeColor=none;" parent="DlC24ixFXXdRtT2Mmo7n-11" vertex="1">
           <mxGeometry y="60" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="DlC24ixFXXdRtT2Mmo7n-13" value="Position y" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="DlC24ixFXXdRtT2Mmo7n-11" vertex="1">
-          <mxGeometry y="90" width="140" height="30" as="geometry" />
-        </mxCell>
         <mxCell id="DlC24ixFXXdRtT2Mmo7n-14" value="Couleur" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="DlC24ixFXXdRtT2Mmo7n-11" vertex="1">
-          <mxGeometry y="120" width="140" height="30" as="geometry" />
+          <mxGeometry y="90" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="DlC24ixFXXdRtT2Mmo7n-15" value="Grille" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="363" y="510" width="140" height="90" as="geometry" />
@@ -116,7 +113,7 @@
         <mxCell id="DlC24ixFXXdRtT2Mmo7n-43" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Utilisateur:(&amp;nbsp;&lt;u&gt;&lt;b&gt;ID&lt;/b&gt;&lt;/u&gt;,&amp;nbsp;&lt;span style=&quot;&quot;&gt;Pseudo&lt;/span&gt;, Mail, Mot de passe)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="110" y="767" width="349" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="DlC24ixFXXdRtT2Mmo7n-44" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Pixel:(&amp;nbsp;&lt;u&gt;&lt;b&gt;ID&lt;/b&gt;&lt;/u&gt;, Position x, Position y,Couleur, &lt;u&gt;&lt;b&gt;ID_Grille&lt;/b&gt;&lt;/u&gt;,&amp;nbsp;&lt;u&gt;&lt;b&gt;ID_Utilisateur&lt;/b&gt;&lt;/u&gt;)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" vertex="1">
+        <mxCell id="DlC24ixFXXdRtT2Mmo7n-44" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Pixel:(&amp;nbsp;&lt;u&gt;&lt;b&gt;ID&lt;/b&gt;&lt;/u&gt;, Position,Couleur, &lt;u&gt;&lt;b&gt;ID_Grille&lt;/b&gt;&lt;/u&gt;,&amp;nbsp;&lt;u&gt;&lt;b&gt;ID_Utilisateur&lt;/b&gt;&lt;/u&gt;)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" vertex="1">
           <mxGeometry x="110" y="797" width="420" height="30" as="geometry" />
         </mxCell>
         <mxCell id="DlC24ixFXXdRtT2Mmo7n-46" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Grille:(&amp;nbsp;&lt;u&gt;&lt;b&gt;ID&lt;/b&gt;&lt;/u&gt;, Nom, &lt;u&gt;&lt;b&gt;ID_Utilisateur&lt;/b&gt;&lt;/u&gt;)&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;" parent="1" vertex="1">

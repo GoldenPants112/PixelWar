@@ -49,15 +49,22 @@ window.addEventListener("load",colorSelector());
 function supprColor(pixel){
     pixel.classList="";
 }
-//fonction qui attend 10 secondes
-function delais(){
-    setTimeout(10000);
+
+//fonction qui attend 15 secondes et ne permet pas a l'utilisateur de poser un pixel
+function grilleLoop(pixels){
+    pixels.forEach(pixel=>pixel.classList.add("bloquee"));
+    setTimeout (()=>{
+        pixels.forEach(pixel =>pixel.classList.remove("bloquee"));
+        pixel.classList.add("bloquee");
+        setTimeout(()=>{
+            pixel.classList.remove("bloquee");
+        },15000);
+    }, 15000);
 }
 
 function pixelColor() {
     const pixels =Array.from(document.querySelectorAll("pixel"));
     const affiche_color= Array.from(document.querySelectorAll("color"));
-    let flag=false;
     pixels.forEach(pixel => {
         affiche_color.forEach(color =>{
             pixel.addEventListener("click",()=>{
@@ -85,30 +92,18 @@ function pixelColor() {
                     supprColor(pixel);
                     pixel.classList.add("pink");
                 }
-                flag=true;
-                return flag ;
-        
+                grilleLoop(pixels);
+                
             }); 
                       
         });
         
     });
-    
-    
 }
 
 
-function grilleLoop(){
-    let flag= pixelColor();
 
-    if (flag){
-        delais();
-    }  
-    pixelColor();
-
-}
-
-window.addEventListener("load",grilleLoop());
+window.addEventListener("load",pixelColor());
 
 
 //fonction qui cherche a envoyer des donee au fichier php afin de recuperere la couleur et la position des pixels

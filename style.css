@@ -170,3 +170,8 @@ color.active {
 .pink{
     background-color: pink;
 }
+
+.bloquee{
+    pointer-events: none;
+    cursor: not-allowed;
+}
