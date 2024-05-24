@@ -7,23 +7,27 @@ if (isset($_POST["pseudo"]) ){
     
 
     //nom/mail/mdp avec des quotes pour les requettes sql
-    $user_name=QuoteStr($_POST["pseudo"]);
-    $user_mail=QuoteStr($_POST["mail"]);
-    $user_paswrd=QuoteStr(hash("sha256",$_POST["mdp"]));
+    $user_name=$_POST["pseudo"];
+    $user_mail=$_POST["mail"];
+    $user_paswrd=hash("sha256",$_POST["mdp"]);
 
-    //requette sql qui permet de verifier si le pseudo rentrer par l'utilisateur est deja pris.
-    $sql="select pseudo from `utilisateur` where pseudo = ".$user_name;
-    $pseudo_bdd=GetSQLValue($sql);
+    //prepare statment sql qui permet de verifier si le pseudo rentrer par l'utilisateur est deja pris.
+    $pseudo_pris_sql=$link->prepare("select `pseudo` from `utilisateur` where `pseudo`=?");
+    $pseudo_pris_sql->bind_param("s",$user_name);
+    $pseudo_pris_sql->execute();
+
+    $pseudo_bdd=$pseudo_pris_sql->get_result();
 
     //condition qui verifie si le pseudo est pris (present dans la bdd)
-    if (isset($pseudo_bdd)){
+    if ($pseudo_bdd->num_rows>0){
         $pseudo_pris=true;
     }
     else{
         
         
-        $sql="insert into utilisateur (pseudo,mail,mdp) values($user_name, $user_mail, $user_paswrd)";
-        ExecuteSQL($sql);
+        $insert_sql=$link->prepare("insert into utilisateur (pseudo,mail,mdp) values(?,?,?)");
+        $insert_sql->bind_param("sss",$user_name,$user_mail,$user_paswrd);
+        $insert_sql->execute();
         $compte_creer=true;
         
     }
@@ -76,8 +80,9 @@ if (isset($_POST["pseudo"]) ){
         
 
         ?>
-
+        <br>
         <a href="seconnecter.php">Vous avez déjà un compte</a>
+        <br>
         <br>
         <a href="index.php">Page d'Acceuil</a>
 
