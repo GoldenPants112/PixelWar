@@ -16,10 +16,6 @@ $nom_requis=false;
 $ajout_grille=false;
 $nom_grille_pris=false;
 
-//nom de l'utilisateur avec des quotes pour les requettes sql
-$pseudo_quote=QuoteStr($pseudo);
-
-
 
 //condition pour ne pas permettre l'acces a cette page sans pseudo
 if($_GET['user'] == NULL){
@@ -27,14 +23,13 @@ if($_GET['user'] == NULL){
 }
 
 //requette sql qui permet de recuperer l'id de l'utilisateur.
-$sql_id="select id from `utilisateur` where pseudo = ".$pseudo_quote;
-$id=GetSQLValue($sql_id);
-$id_quote=QuoteStr($id);
+$sql_id=$link->prepare("select id from `utilisateur` where pseudo =?");
+$sql_id->bind_param("s",$pseudo);
+$sql_id->execute();
+$id_result=$sql_id->get_result();
+$id_row=$id_result->fetch_assoc();
+$id=$id_row ? $id_row["id"] :null;
 
-//selectionne toutes les grilles de cet utilisateur
-// $sql_user_grille="select * from `grille` where user_id = ".$id_quote;
-// echo "id grille :".GetSQL($sql_user_grille,$grille_utilisateur);
-// echo "<br>";
 
 //selectionne toutes les grilles 
 $sql_grille="select * from `grille`";
@@ -48,16 +43,25 @@ if (isset($_POST["ajout_grille"]) ){
         $nom_requis=true;
     }
     else{
-        //requette sql qui permet de verifier si le nom de la grille rentrer par l'utilisateur est deja pris.
-        $sql="select nom from `grille` where nom = ".$nom_grille_quote;
-        $nom_grille_bdd=GetSQLValue($sql);
-        if (isset($nom_grille_bdd)){
+        //requette sql qui permet de verifier si le nom de la grille rentrer par l'utilisateur est deja pris. (a l'aide de la prepared statment)
+        $sql_grille =$link->prepare("select `nom` from `grille` where `nom`=?");
+        $sql_grille->bind_param("s",$nom_grille);
+        $sql_grille->execute();
+        $grille_result= $sql_grille->get_result();
+        $grille_row = $grille_result->fetch_assoc();
+        $grille_bdd = $grille_row ? $grille_row["nom"]:null;
+
+        
+        if ($grille_bdd !== null){
             $nom_grille_pris=true;
         }
         else{
-            $sql="insert into grille(nom,user_id) values($nom_grille_quote,$id_quote)";
-            ExecuteSQL($sql);
+            $sql_insert_grille=$link->prepare("insert into grille(nom,user_id) values(?,?)");
+            $sql_insert_grille->bind_param("ss",$nom_grille,$id);
+            $sql_insert_grille->execute();
+            // ExecuteSQL($sql);
             $ajout_grille=true;
+            $sql_insert_grille->close();
         }
         
     }
@@ -65,7 +69,7 @@ if (isset($_POST["ajout_grille"]) ){
     
 
 }
-
+$sql_id->close();
 
 ?>
 
