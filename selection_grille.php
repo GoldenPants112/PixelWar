@@ -5,9 +5,8 @@ include("config/config.inc.php");
 $pseudo=$_GET["user"];
 
 //recuperer le nom de la grille renter par l'utilisateur
-if (isset($_POST["nom"])){      //condition pour eviter un warning au lancement de la page
+if (isset($_POST["nom"])){      
     $nom_grille=$_POST["nom"];
-    $nom_grille_quote=QuoteStr($nom_grille);  //pour les rqeutte sql
 }
 
 
